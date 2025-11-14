@@ -1,4 +1,5 @@
-import { ExternalLink, Shield, Code2 } from 'lucide-react'
+import { ExternalLink, Shield } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const projects = [
   {
@@ -23,9 +24,22 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+      className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
       {projects.map((p) => (
-        <a key={p.title} href={p.link} className="group relative rounded-2xl border border-slate-200 overflow-hidden">
+        <motion.a
+          key={p.title}
+          href={p.link}
+          variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+          whileHover={{ y: -4 }}
+          className="group relative rounded-2xl border border-slate-200 overflow-hidden bg-white"
+        >
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="p-6 relative">
             <div className="flex items-center gap-2 text-xs text-cyan-700">
@@ -38,8 +52,8 @@ export default function Projects() {
               View <ExternalLink className="h-4 w-4" />
             </div>
           </div>
-        </a>
+        </motion.a>
       ))}
-    </div>
+    </motion.div>
   )
 }

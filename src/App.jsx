@@ -4,10 +4,12 @@ import Section from './components/Section'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import Cursor from './components/Cursor'
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
+      <Cursor />
       <Navbar />
       <main>
         <Hero />
