@@ -1,26 +1,44 @@
-import { useState } from 'react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import Section from './components/Section'
+import Skills from './components/Skills'
+import Projects from './components/Projects'
+import Contact from './components/Contact'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <main>
+        <Hero />
+
+        <Section id="about" title="About" subtitle="Minimal aesthetics × security engineering">
+          <div className="prose prose-slate max-w-none">
+            <p className="text-slate-700">
+              I’m Sarthak Geet — a cybersecurity enthusiast focused on red teaming, threat hunting, and building elegant, resilient systems. I love blending clean, minimal visual language with the rigor of secure-by-default engineering.
+            </p>
+          </div>
+        </Section>
+
+        <Section id="skills" title="Skills" subtitle="A focused toolkit for modern security work">
+          <Skills />
+        </Section>
+
+        <Section id="projects" title="Featured Projects" subtitle="Selected work in security and tooling">
+          <Projects />
+        </Section>
+
+        <Section id="contact" title="Contact" subtitle="Let’s build something secure and beautiful">
+          <Contact />
+        </Section>
+
+        <footer className="py-10 border-t border-slate-200">
+          <div className="mx-auto max-w-7xl px-6 text-sm text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p>© {new Date().getFullYear()} Sarthak Geet</p>
+            <p className="text-slate-400">Built with a minimalist, futuristic touch.</p>
+          </div>
+        </footer>
+      </main>
     </div>
   )
 }
